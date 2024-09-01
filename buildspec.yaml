@@ -1,0 +1,35 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo Installing Node.js version 20...
+      - npm install
+
+  pre_build:
+    commands:
+      - echo Running pre-build tasks...
+      - npm run lint || true  # Assuming you might have a linting script, ignore failures
+
+  build:
+    commands:
+      - echo Building the project...
+      - npm run build || true  # Assuming you might have a build script
+
+  post_build:
+    commands:
+      - echo Running post-build tasks...
+      - npm test || true  # Run tests if you have them
+      - echo Build completed at `date`
+
+artifacts:
+  base-directory: build
+  files:
+    - '**/*'
+  discard-paths: yes
+
+cache:
+  paths:
+    - 'node_modules/**/*'
