@@ -3,5 +3,5 @@ WORKDIR /app
 COPY . ./
 RUN npm install 
 RUN ls -ltr
-EXPOSE 8501
+EXPOSE 5000
 CMD ["node", "index.js"]
