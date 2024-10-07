@@ -17,7 +17,7 @@ phases:
   pre_build:
     commands:
       - echo "configure git user ..."
-      - git config --global user.eamil "a2838k@gamil.com"
+      - git config --global user.eamil "a2838k@gmail.com"
       - git config --global user.name "ankit"
       - git config --global credential.helper ' !aws codecommit credential-helper $@'
       - git config --global credential.UseHttpPath true
