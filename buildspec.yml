@@ -13,7 +13,7 @@ phases:
       - source ~/.bashrc
       - echo 'Check kubectl version'
       - kubectl version --short --client
-      - echo Starting sample app build process
+      - echo Starting sample app build process 
   pre_build:
     commands:
       - echo "configure git user ..."
@@ -43,7 +43,7 @@ phases:
       - echo "new_version:$NEW_VERSION"
       - echo "current_version:$version"
       - sed -i "s/version:.*/version:$NEW_VERSION/" update.txt
-      - sed -i "s|image:.*|image:busybox:${NEW_VERSION}" deployment.yaml
+      - sed -i "s|image:.*|image:busybox:${NEW_VERSION}|" deployment.yaml
       - git checkout master
       - git add update.txt
       - git commit -m "adding the files"
