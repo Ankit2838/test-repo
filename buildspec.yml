@@ -29,9 +29,9 @@ phases:
       - CURRENT_VERSION=1.0.0 
       - echo "current_version:$CURRENT_VERSION"
       - IFS= '.' read -ra VERSION_PART <<< "$CURRENT_VERSION"
-      - echo "Major:$VERSION_PART[0]"
-      - echo "Minor:$VERSION_PART[1]"
-      - echo "PAtch:$VERSION_PART[2]"
+      - echo "Major:${VERSION_PART[0]}"
+      - echo "Minor:${VERSION_PART[1]}"
+      - echo "PAtch:${VERSION_PART[2]}"
 
       
   post_build:
