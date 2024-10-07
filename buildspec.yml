@@ -25,6 +25,9 @@ phases:
   build:
     commands:
       - echo Building the Docker image.
+      - echo "implementing the image version in script "\
+      - CURRENT_VERSION=1.0.0 
+      - echo "current_version:$CURRENT_VERSION"
       
   post_build:
     commands:
