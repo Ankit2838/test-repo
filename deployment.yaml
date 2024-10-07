@@ -1,0 +1,52 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ia-agent
+  labels:
+    app: ia-agent
+  name: ia-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ia-agent
+  template:
+    metadata:
+      labels:
+        app: ia-agent
+    spec:
+      containers:
+        - envFrom:
+          - configMapRef: 
+              name: cm-ia-agent
+          image: busybox:latest
+          imagePullPolicy: Always
+          name: ia-agent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1048M
+            requests:
+              memory: 1048M
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ia-agent
+  labels:
+    app: ia-agent
+  name: ia-agent
+spec:
+  selector:
+    app: ia-agent
+  type: LoadBalancer
+  ports:
+   -  name: ia-agent
+      port: 80
+      targetPort: 80
+
+
