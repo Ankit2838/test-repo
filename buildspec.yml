@@ -26,4 +26,5 @@ phases:
     commands:
       - echo Building the Docker image.
       - version_line=$(grep "version:" update.txt )
-      - echo "current_version:$version_line"
+      - version=${version_line##*:} 
+      - echo "current_version:$version"
