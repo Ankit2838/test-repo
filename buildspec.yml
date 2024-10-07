@@ -17,9 +17,7 @@ phases:
   pre_build:
     commands:
       - echo check config 
-      - kubectl config view --minify
       - echo check kubectl access
-      - kubectl get svc
       - echo Logging in to Amazon ECR...
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - echo "implementing the image version in deployment.yaml"
