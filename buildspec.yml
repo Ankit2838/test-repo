@@ -32,8 +32,8 @@ phases:
       - echo "Major:${VERSION_PART[0]}"
       - echo "Minor:${VERSION_PART[1]}"
       - echo "PAtch:${VERSION_PART[2]}"
-      - VERSION_PART[2]= ((${VERSION_PART[2]} + 1))
-
+      - VERSION_PART[2]= (($VERSION_PART[2] + 1))
+      - echo "version:$VERSION_PART[2]"
       
   post_build:
     commands:
