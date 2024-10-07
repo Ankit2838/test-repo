@@ -26,10 +26,12 @@ phases:
     commands:
       - echo Building the Docker image.
       - echo "implementing the image version in script "
-      - CURRENT_VERSION="1.0.0" 
+      - CURRENT_VERSION=1.0.0 
       - echo "current_version:$CURRENT_VERSION"
-      - echo "PAtch:${VERSION_PART[2]}"
-      - IFS= '.' read -a VERSION_PART <<< "$CURRENT_VERSION"
+      - IFS= '.' read -r major minor patch <<< "$CURRENT_VERSION"
+      - patch=$((patch + 1))
+      - NEW_VERSION="$major.$minor.$patch"
+      - echo "new_version:$NEW_VERSION"
       - echo "Major:${VERSION_PART[0]}"
       - echo "Minor:${VERSION_PART[1]}"
       - echo "PAtch:${VERSION_PART[2]}"
