@@ -16,6 +16,11 @@ phases:
       - echo Starting sample app build process
   pre_build:
     commands:
+      - echo "configure git user ..."
+      - git config --global user.eamil "hellouser@gamil.com"
+      - git config --global user.name "anki"
+      - git config --global credential.helper ' !aws codecommit credential-helper $@'
+      - git config --global credential.UseHttpPath true
       - echo check config 
       - echo check kubectl access
       - echo Logging in to Amazon ECR...
@@ -34,7 +39,11 @@ phases:
       - echo "patch:$patch"
       - patch=$((patch + 1))
       - echo "patch:$patch"
-      - NEW_VERSION=$major:$minor$patch
+      - NEW_VERSION=$major:$minor:$patch
       - echo "new_version:$NEW_VERSION"
-
       - echo "current_version:$version"
+      - git checkout master
+      - git add update.txt
+      - git commit -m "adding the files"
+      - git push origin master
+      
