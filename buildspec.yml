@@ -27,4 +27,9 @@ phases:
       - echo Building the Docker image.
       - version_line=$(grep "version:" update.txt )
       - version=${version_line##*:} 
+      - echo "separating the values "
+      - IFS='.' read -r major minor patch <<< "$version"
+      - echo "patch:$patch"
+      - patch=$((patch + 1))
+      - echo "patch:$patch"
       - echo "current_version:$version"
