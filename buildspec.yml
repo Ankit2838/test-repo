@@ -29,7 +29,10 @@ phases:
       - version=${version_line##*:} 
       - echo "separating the values "
       - IFS='.' read -r major minor patch <<< "$version"
+      - echo "major:$major"
+      - echo "minor:$minor"
       - echo "patch:$patch"
       - patch=$((patch + 1))
       - echo "patch:$patch"
+
       - echo "current_version:$version"
