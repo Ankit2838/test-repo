@@ -28,8 +28,11 @@ phases:
       - echo "implementing the image version in script "
       - CURRENT_VERSION=1.0.0 
       - echo "current_version:$CURRENT_VERSION"
-      - IFS= '.' read -r -a VERSION_PART <<< "$CURRENT_VERSION"
-      - echo "version:$VERSION_PART"
+      - IFS= '.' read -ra VERSION_PART <<< "$CURRENT_VERSION"
+      - echo "Major:$VERSION_PART[0]"
+      - echo "Minor:$VERSION_PART[1]"
+      - echo "PAtch:$VERSION_PART[2]"
+
       
   post_build:
     commands:
