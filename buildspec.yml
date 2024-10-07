@@ -30,4 +30,4 @@ phases:
     commands:
       - echo "deploying the application"
      
-      - kubectl -n  apply -f deployment.yaml
+      - kubectl   apply -f deployment.yaml
