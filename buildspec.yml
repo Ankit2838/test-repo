@@ -31,6 +31,7 @@ phases:
       - IFS=':. ' read -r major minor patch <<< "$version_line"
 
 # Increment the patch version
+      - patch=${patch%%.*} 
       - patch=$((patch + 1))
 
 # Write the new version back to version.txt
