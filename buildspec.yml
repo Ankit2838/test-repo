@@ -29,7 +29,7 @@ phases:
       - CURRENT_VERSION=1.0.0 
       - echo "current_version:$CURRENT_VERSION"
       - IFS= '.' read -r -a VERSION_PART <<< "$CURRENT_VERSION"
-      - echo "$VERSION_PART"
+      - echo "version:$VERSION_PART"
       
   post_build:
     commands:
