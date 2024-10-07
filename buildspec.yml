@@ -42,8 +42,9 @@ phases:
       - NEW_VERSION=$major:$minor:$patch
       - echo "new_version:$NEW_VERSION"
       - echo "current_version:$version"
+      - sed -i "s/version:.*/version:$NEW_VERSION/" update.txt
       - git checkout master
       - git add update.txt
       - git commit -m "adding the files"
       - git push origin master
-      
+
