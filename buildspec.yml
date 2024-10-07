@@ -34,5 +34,7 @@ phases:
       - echo "patch:$patch"
       - patch=$((patch + 1))
       - echo "patch:$patch"
+      - NEW_VERSION=$major:$minor$patch
+      - echo "new_version:$NEW_VERSION"
 
       - echo "current_version:$version"
