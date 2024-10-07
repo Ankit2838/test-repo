@@ -28,9 +28,9 @@ phases:
       - echo "implementing the image version in script "
       - CURRENT_VERSION=1.0.0 
       - echo "current_version:$CURRENT_VERSION"
-      - awk -F '.' '{print "major":"$1"}' <<< "$CURRENT_VERSION"
-      - awk -F '.' '{print "minor":"$2"}' <<< "$CURRENT_VERSION"
-      - awk -F '.' '{print "patch":"$3"}' <<< "$CURRENT_VERSION"
+      - awk -F '.' '{print "major", $1}' <<< "$CURRENT_VERSION"
+      - awk -F '.' '{print "minor", $2}' <<< "$CURRENT_VERSION"
+      - awk -F '.' '{print "patch", $3}' <<< "$CURRENT_VERSION"
       - echo "$CURRENT_VERSION" | awk -F '.' '{print "Major:"$1"\nMinor:"$2"\nPatch:"$3}'
       - IFS= '.' read -r major minor patch <<< "$CURRENT_VERSION"
       - echo "major:$major"
