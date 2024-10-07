@@ -26,7 +26,7 @@ phases:
     commands:
       - echo Building the Docker image.
       - echo "implementing the image version in script "
-      - CURRENT_VERSION=1.0.0 
+      - CURRENT_VERSION="1.0.0" 
       - echo "current_version:$CURRENT_VERSION"
       - IFS= '.' read -a VERSION_PART <<< "$CURRENT_VERSION"
       - echo "Major:${VERSION_PART[0]}"
