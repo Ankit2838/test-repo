@@ -25,9 +25,16 @@ phases:
   build:
     commands:
       - echo Building the Docker image.
-      - echo "implementing the image version in script "
-      - CURRENT_VERSION=$(grep 'version:' update.txt)
-      - echo "current_version:$CURRENT_VERESION"
-      - echo "$CURRENT_VERSION" | awk -F '.' '{print "Major:"$1"\nMinor:"$2"\nPatch:"$3}'
-    
-      - kubectl   apply -f deployment.yaml
+      - version_line=$(grep "version:" version.txt)
+
+# Set IFS to split the version into major, minor, and patch
+      - IFS=':. ' read -r major minor patch <<< "$version_line"
+
+# Increment the patch version
+      - patch=$((patch + 1))
+
+# Write the new version back to version.txt
+      - echo "version:$major.$minor.$patch" > version.txt
+
+# Optionally, output the new version
+      - echo "Updated Version:$major.$minor.$patch"
