@@ -50,5 +50,5 @@ phases:
       - git checkout master
       - git add update.txt
       - git commit -m "adding the files"
-      - git push origin main
+      - git push origin master
       - 
