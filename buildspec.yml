@@ -51,7 +51,7 @@ phases:
   post_build:
     commands:
       - echo "to push the changes "
-      - git checkout main 
+      - git checkout master
       - git add update.txt
       - git commit -m "adding the files"
       - git push origin main
