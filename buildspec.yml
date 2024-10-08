@@ -43,10 +43,6 @@ phases:
       - echo "current_version:$version"
       - sed -i "s/version:.*/version:$NEW_VERSION/" update.txt
       - sed -i "s|image:.*|image:\busybox:${NEW_VERSION}|" deployment.yaml
-      - git checkout master
-      - git add update.txt
-      - git commit -m "adding the files"
-      - git push origin master
   
   post_build:
     commands:
