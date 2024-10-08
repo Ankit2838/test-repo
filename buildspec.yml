@@ -17,10 +17,10 @@ phases:
   pre_build:
     commands:
       - echo "configure git user ..."
-      - git config --global user.eamil "a2838k@gmail.com"
-      - git config --global user.name "ankit"
-      - git config --global credential.helper ' !aws codecommit credential-helper $@'
-      - git config --global credential.UseHttpPath true
+      - git config  user.eamil "a2838k@gmail.com"
+      - git config  user.name "ankit"
+      - git config  credential.helper ' !aws codecommit credential-helper $@'
+      - git config  credential.UseHttpPath true
       - echo check config 
       - echo check kubectl access
       - echo Logging in to Amazon ECR...
@@ -43,9 +43,17 @@ phases:
       - echo "new_version:$NEW_VERSION"
       - echo "current_version:$version"
       - sed -i "s/version:.*/version:$NEW_VERSION/" update.txt
-      - sed -i "s|image:.*|image:busybox:${NEW_VERSION}|" deployment.yaml
+      - sed -i "s|image:.*|image:\busybox:${NEW_VERSION}|" deployment.yaml
       - git checkout master
       - git add update.txt
       - git commit -m "adding the files"
       - git push origin master
-
+  
+  post_build:
+    commands:
+      - echo "to push the changes "
+      - git checkout main 
+      - git add update.txt
+      - git commit -m "adding the files"
+      - git push origin main
+      - 
