@@ -1,0 +1,11 @@
+jobPipeline('dsl-job'){
+    definition{
+        cpsScm{
+            scm{
+                remote{
+                    url
+                }
+            }
+        }
+    }
+}
