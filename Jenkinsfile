@@ -5,13 +5,12 @@ pipeline {
         stage('Installing depemnedencies') {
             steps {
                 echo 'Building the app'
-                sh 'npm install'
             }
         }
         stage('building stage') {
             steps {
                 echo 'Running tests'
-                sh 'npm run build'
+                sh 'docker build -t test -f Dockerfile .'
             }
         }
         stage('post build') {
