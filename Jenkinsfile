@@ -1,26 +1,18 @@
-#!/usr/bin/env groovy
-pipeline{
-    agent{
-        docker{
-            image 'node'
-            args '-u root'
-        }
-    }
-    stages{
+pipeline {
+    agent any
+
+    stages {
         stage('build') {
             steps {
-                echo 'building the image'
+                echo 'Building the app'
                 sh 'npm install'
             }
         }
         stage('test') {
             steps {
-                echo 'testing'
+                echo 'Running tests'
                 sh 'npm test'
             }
         }
     }
 }
-            
-              
-              
