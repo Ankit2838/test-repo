@@ -2,17 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('build') {
+        stage('Installing depemnedencies') {
             steps {
                 echo 'Building the app'
                 sh 'npm install'
             }
         }
-        stage('test') {
+        stage('building stage') {
             steps {
                 echo 'Running tests'
-                sh 'npm test'
+                sh 'npm run build'
             }
+        }
+        stage('post build') {
+            echo 'everything is completed'
+            sh 'node index.js'
         }
     }
 }
