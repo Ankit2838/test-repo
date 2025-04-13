@@ -17,7 +17,7 @@ pipeline {
         stage('post build') {
             steps{
                 echo 'everything is completed'
-                sh 'node index.js'
+                
             }
         }
     }
