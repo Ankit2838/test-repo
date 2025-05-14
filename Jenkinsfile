@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        user_credentials = credentials('usercredentials') // this injects username and password
+    }
 
     stages {
         stage('Installing depemnedencies') {
@@ -19,5 +22,20 @@ pipeline {
                 
             }
         }
+        stage('building stage') {
+            steps {
+                echo 'Running tests'
+                withCredentials([usernamePassword(credentialsId: 'usercredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh '''
+                        echo "Using credentials..."
+                        echo "Username: $USERNAME"
+                        echo "Password: $PASSWORD"
+                        docker login -u $USERNAME -p $PASSWORD
+                        docker build -t test -f Dockerfile .
+                    '''
+                }
+            }
+        }
+        
     }
 }
