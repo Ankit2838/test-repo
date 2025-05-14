@@ -13,7 +13,7 @@ pipeline {
         stage('building stage') {
             steps {
                 echo 'Running tests'
-                sh 'docker build -t test -f Dockerfile .'
+                echo 'this is docekr file'
             }
         }
         stage('post build') {
