@@ -13,7 +13,9 @@ pipeline {
         stage('building stage') {
             steps {
                 echo 'Running tests'
+
                 echo 'this is docekr file'
+
             }
         }
         stage('post build') {
