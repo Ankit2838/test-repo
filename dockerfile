@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package.json /app/package.json
 RUN npm install --no-cache-dir
 COPY . /app
+RUN npm run test
 RUN npm run build 
 EXPOSE 5000
 RUN ls -ltr
