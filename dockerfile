@@ -4,5 +4,6 @@ COPY package.json /app/package.json
 RUN npm install --no-cache-dir
 COPY . /app
 RUN npm run build 
+EXPOSE 5000
 RUN ls -ltr
 ENTRYPOINT [ "node", "index.js" ]
