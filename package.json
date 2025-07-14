@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "build": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "check-coverage":  "jest --coverage --coverageThreshold='{\"global\": {\"lines\":80}}' _tests_/login-fail.test.js _test_/login-success.test.js"
   },
   "keywords": [
     "hello"
@@ -15,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.7.0",
+    "supertest": "^7.1.3",
     "webpack": "^5.99.5",
     "webpack-cli": "^5.1.4"
   },
@@ -254,6 +256,7 @@
     "type": "git",
     "url": "git+https://github.com/Ankit2838/test-repo.git"
   },
+
   "bugs": {
     "url": "https://github.com/Ankit2838/test-repo/issues"
   },
