@@ -19,9 +19,11 @@ app.post('/login', (req, res) => {
   return res.send(`✅ Welcome, ${username}!`);
 });
 
-app.listen(5000, () => {
-  console.log('LF Edge App is running on port 5000');
-});
+if (require.main === module) {
+  app.listen(5000, () => {
+    console.log("LF Edge App is running on port 5000");
+  });
+}
 
 // ✅ Export app for testing
 module.exports = app;
