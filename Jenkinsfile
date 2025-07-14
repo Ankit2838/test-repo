@@ -13,6 +13,12 @@ pipeline {
                 sh 'docker build -t test -f Dockerfile .'
             }
         }
+        stage('deploy stage'){
+            steps { 
+                echo "building the container and running "
+                sh 'docker run -p 8000:5000 test'
+            }
+        }
         stage('post build') {
             steps{
                 echo 'everything is completed'
