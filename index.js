@@ -1,3 +1,9 @@
+function logSecurityWarning() {
+  console.log("⚠️ Potential login attempt without credentials");
+}
+function logSecurutyvulnereability() {
+  console.log(" Potential login attempt without credentials");
+}
 const express = require('express');
 const path = require('path');
 const app = express(); // ✅ DEFINE app BEFORE using it
