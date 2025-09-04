@@ -1,18 +1,35 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting the traditional way
+function logSecurityWarning() {
+  console.log("⚠️ Potential login attempt without credentials");
+}
+function logSecurutyvulnereability() {
+  console.log(" Potential login attempt without credentials");
+}
+const express = require('express');
+const path = require('path');
+const app = express(); // ✅ DEFINE app BEFORE using it
 
-    // Get input values
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
 
-    // Simple validation
-    if (username === '' || password === '') {
-        document.getElementById('message').textContent = 'Please enter both username and password.';
-        document.getElementById('message').style.color = 'red';
-    } else {
-        // In a real-world application, you'd send the data to a server here.
-        document.getElementById('message').textContent = `Welcome, ${username}!`;
-        document.getElementById('message').style.color = 'green';
-    }
-    app.listen(5000, ()=>{ console.log("application si running on port 5000")}
+app.post('/login', (req, res) => {
+  let { username, password } = req.body;
+
+  // Normalize inputs
+  username = username?.trim();
+  password = password?.trim();
+
+  if (!username || !password) {
+    return res.send('❌ Username and password are required.');
+  }
+
+  return res.send(`✅ Welcome, ${username}!`);
 });
+
+if (require.main === module) {
+  app.listen(5000, () => {
+    console.log("LF Edge App is running on port 5000");
+  });
+}
+
+// ✅ Export app for testing
+module.exports = app;

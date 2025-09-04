@@ -1,7 +1,10 @@
-FROM public.ecr.aws/docker/library/node:latest
+FROM node:20.7.0-alpine 
 WORKDIR /app
-COPY . ./
-RUN npm install 
-RUN ls -ltr
+COPY package.json /app/package.json
+RUN npm install --no-cache-dir
+COPY . /app
+RUN npm run check-coverage
+RUN npm run build 
 EXPOSE 5000
-CMD ["node", "index.js"]
+RUN ls -ltr
+ENTRYPOINT [ "node", "index.js" ]
